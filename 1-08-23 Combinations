@@ -1,0 +1,23 @@
+class Solution {
+public:
+   void solve(int n,int st,int k,vector<int>&ans,vector<vector<int>> &ret)
+    {
+        if(st>n || k==0)
+        {
+            ret.push_back(ans);
+        }
+        for(int i=st+1;i<=n;i++)
+        {
+            ans.push_back(i);
+            solve(n,i,k-1,ans,ret);
+            ans.pop_back();
+
+        }
+    }
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>> ret;
+        vector<int>ans;
+        solve(n,0,k,ans,ret);
+        return ret;
+    }
+};
