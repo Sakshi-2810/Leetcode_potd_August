@@ -1,0 +1,47 @@
+class Solution {
+public:
+    void solve(vector<string>&seq,vector<string>&ans,int i,string s)
+    {
+        if(i>=seq.size()) {
+            ans.push_back(s);
+            return ;
+            }
+
+        for(auto j:seq[i])
+        {
+            solve(seq,ans,i+1,s+j);
+        }
+
+    }
+    vector<string> letterCombinations(string digits) {
+        map<int,string> m;
+        string a="abc";
+        string b="def";
+        string c="ghi";
+        string d="jkl";
+        string e="mno";
+        string f="pqrs";
+        string g="tuv";
+        string h="wxyz";
+        m[2]=a;
+        m[3]=b;
+        m[4]=c;
+        m[5]=d;
+        m[6]=e;
+        m[7]=f;
+        m[8]=g;
+        m[9]=h;
+
+        vector<string>seq;
+        for(int i:digits)
+        {
+            seq.push_back(m[i-'0']);
+        }
+
+        vector<string>ans;
+        if(digits.size()!=0)
+        solve(seq,ans,0,"");
+        
+        return ans;
+    }
+};
