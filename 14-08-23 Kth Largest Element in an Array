@@ -1,0 +1,27 @@
+class Compare{
+public:
+     bool operator()(int v1,int v2)
+	 {
+		 if(v1>v2) return true;
+		 return false;
+	 }
+};
+class Solution {
+public:
+    int findKthLargest(vector<int>& arr, int k) {
+	priority_queue<int,vector<int>,Compare>large;
+    for(int i=0;i<k;i++)
+	{
+		large.push(arr[i]);
+    }
+    for(int i=k;i<arr.size();i++)
+	{
+		if(large.top()<arr[i])
+		{
+			large.pop();
+			large.push(arr[i]);
+		}
+    }
+    return large.top();
+    }
+};
