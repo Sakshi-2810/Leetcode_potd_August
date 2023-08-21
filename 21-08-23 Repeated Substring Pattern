@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool repeatedSubstringPattern(string s) {
+        int l=s.length();
+        string ans="";
+        ans+=s[0];
+        for(int i=1;i<=l/2;i++)
+        {
+            if(ans[0]!=s[i]) ans+=s[i];
+            else
+            {
+                string temp=ans;
+                while(temp.length()<l) temp+=ans;
+                // cout<<"temp="<<temp<<endl;
+                if(temp==s) return true;
+                ans+=s[i];
+            }
+        }
+        // if(ans+ans==s) return true;
+        return false;
+            
+    }
+};
