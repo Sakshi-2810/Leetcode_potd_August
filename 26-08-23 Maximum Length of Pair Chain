@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findLongestChain(vector<vector<int>>& pairs) {
+        sort(pairs.begin(),pairs.end(),[](vector<int>&a,vector<int>&b )->bool
+        {
+            return a[1]<b[1];
+        });
+        int last=pairs[0][1],ans=1;
+        for(auto i:pairs)
+        {
+            // cout<<i[0]<<" "<<i[1]<<endl;
+            if(last<i[0])
+            {
+                ans++;
+                last=i[1];
+                // cout<<last<<endl;
+            }
+
+        }
+        return ans;
+    }
+};
